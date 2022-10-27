@@ -1,0 +1,8 @@
+time="2022-10-27T08:20:00+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://10.250.11.33:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="TCP connection established" local_addr="10.12.10.32:20816" remote_addr="pulsar://10.250.11.33:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="Connection is ready" local_addr="10.12.10.32:20816" remote_addr="pulsar://10.250.11.33:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://pulsar-broker-fat:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="TCP connection established" local_addr="10.12.10.32:20817" remote_addr="pulsar://pulsar-broker-fat:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="Connection is ready" local_addr="10.12.10.32:20817" remote_addr="pulsar://pulsar-broker-fat:6650"
+time="2022-10-27T08:20:00+08:00" level=info msg="Connected consumer" consumerID=1 name=vdfpl subscription=my-sub topic="persistent://public/default/my-topic"
+time="2022-10-27T08:20:00+08:00" level=info msg="Created consumer" consumerID=1 name=vdfpl subscription=my-sub topic="persistent://public/default/my-topic"

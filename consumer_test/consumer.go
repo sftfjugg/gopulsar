@@ -23,23 +23,29 @@ func main() {
 		log.Fatalf("Could not instantiate Pulsar client: %v", err)
 	}
 
-	producer, err := client.CreateProducer(pulsar.ProducerOptions{
-		Topic: "my-topic",
+	consumer, err := client.Subscribe(pulsar.ConsumerOptions{
+		Topic:            "my-topic",
+		SubscriptionName: "my-sub",
+		Type:             pulsar.Shared,
 	})
-
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer consumer.Close()
 
-	_, err = producer.Send(context.Background(), &pulsar.ProducerMessage{
-		Payload: []byte("hello"),
-	})
+	for i := 0; i < 10; i++ {
+		msg, err := consumer.Receive(context.Background())
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	defer producer.Close()
+		fmt.Printf("Received message msgId: %#v -- content: '%s'\n",
+			msg.ID(), string(msg.Payload()))
 
-	if err != nil {
-		fmt.Println("Failed to publish message", err)
+		consumer.Ack(msg)
 	}
-	fmt.Println("Published message")
 
+	if err := consumer.Unsubscribe(); err != nil {
+		log.Fatal(err)
+	}
 }
