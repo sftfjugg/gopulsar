@@ -1,4 +1,4 @@
-module gopulsar
+module github.com/sftfjugg/gopulsar
 
 go 1.19
 
